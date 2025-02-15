@@ -61,7 +61,6 @@
 
 // export default App;
 
-
 import React, { useEffect, useState, useCallback } from "react";
 import "prismjs/themes/prism-tomorrow.css";
 import "./App.css";
@@ -70,7 +69,7 @@ import Editor from "react-simple-code-editor";
 import axios from "axios";
 import Markdown from "react-markdown";
 // process.env.REACT_APP_API_ENDPOINT ||
-const API_ENDPOINT =  "http://localhost:3000/ai/get-response"; // Use environment variable
+const API_ENDPOINT = "http://localhost:3000/ai/get-response"; // Use environment variable
 
 function App() {
   const [code, setCode] = useState("");
@@ -79,7 +78,7 @@ function App() {
   const [error, setError] = useState(null);
 
   const highlight = useCallback((code) => {
-    return prism.highlight(code, prism.languages.javascript, "javascript")
+    return prism.highlight(code, prism.languages.javascript, "javascript");
   }, []);
 
   useEffect(() => {
@@ -87,6 +86,10 @@ function App() {
   }, [codeReview]); // re-highlight when the review changes
 
   const reviewHandler = async () => {
+    if(code.trim() === "") {
+      setError("Please enter some code to review.");
+      return;
+    }
     setLoading(true);
     setError(null); // Clear any previous errors
     try {
@@ -108,6 +111,9 @@ function App() {
 
   return (
     <>
+      <div>
+        <h4>Code Reviewer Powered by Gen Ai</h4>
+      </div>
       <main>
         <div className="left">
           <div className="code">
@@ -131,8 +137,10 @@ function App() {
           </button>
         </div>
         <div className="right">
-          {error && <div className="error-message">Error: {error}</div>} {/* Display error message */}
-          {loading ? <p>Loading...</p> : <Markdown>{codeReview}</Markdown>} {/* Show loading indicator */}
+          {error && <div className="error-message">Error: {error}</div>}{" "}
+          {/* Display error message */}
+          {loading ? <p>Loading...</p> : <Markdown>{codeReview}</Markdown>}{" "}
+          {/* Show loading indicator */}
         </div>
       </main>
     </>

@@ -28,14 +28,15 @@ main .right {
 
 main .left .review {
   position: absolute;
-  bottom: 2.5rem;
-  left: 35rem;
+  bottom: 1rem;
+  left: 36rem;
   background-color: aliceblue;
   color: #141313;
   padding: 0.5rem 1.5rem;
-  border-radius: 0.6rem;
+  border-radius: 0.5rem;
   cursor: pointer;
   user-select: none;
+  width: 10rem;
 }
 
 .left .code, .code pre, .code pre code{
@@ -55,4 +56,9 @@ main .right {
   padding: 1rem 2rem;
   font-size: small;
   overflow: auto;
+}
+
+h4{
+  text-align: center;
+  /* padding: 0.5rem; */
 }
