@@ -2,7 +2,7 @@ const aiService = require("../services/ai.service");
 
 const getResponse = async (req, res) => {
   try {
-    const prompt = req.body.prompt;
+    const prompt = req.body.code;
     if (!prompt) {
       return res.status(400).send("Prompt is required");
     }
