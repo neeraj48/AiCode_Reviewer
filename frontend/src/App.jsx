@@ -68,7 +68,7 @@ import prism from "prismjs";
 import Editor from "react-simple-code-editor";
 import axios from "axios";
 import Markdown from "react-markdown";
-// process.env.REACT_APP_API_ENDPOINT ||
+
 const API_ENDPOINT = "http://localhost:3000/ai/get-response"; // Use environment variable
 
 function App() {
@@ -86,7 +86,7 @@ function App() {
   }, [codeReview]); // re-highlight when the review changes
 
   const reviewHandler = async () => {
-    if(code.trim() === "") {
+    if (code.trim() === "") {
       setError("Please enter some code to review.");
       return;
     }
